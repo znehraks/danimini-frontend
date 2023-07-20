@@ -8,7 +8,7 @@ import { TYPO_SIZE } from "../../../../enums";
 interface TTypoProps {
   size: TYPO_SIZE;
   children: ReactNode;
-  style: SerializedStyles;
+  style?: SerializedStyles;
 }
 
 // 가장 기본적인 폰트 관련 ui담당하는 아톰 컴포넌트입니다.
@@ -31,6 +31,12 @@ function TypoTitle({ size, children, style }: TTypoProps) {
         <TitleTypo css={style} className="small">
           {children}
         </TitleTypo>
+      );
+    case TYPO_SIZE.TINY:
+      return (
+        <ContentTypo css={style} className="tiny">
+          {children}
+        </ContentTypo>
       );
     default:
       return null;
@@ -57,6 +63,12 @@ function TypoContent({ size, children, style }: TTypoProps) {
           {children}
         </ContentTypo>
       );
+    case TYPO_SIZE.TINY:
+      return (
+        <ContentTypo css={style} className="tiny">
+          {children}
+        </ContentTypo>
+      );
     default:
       return null;
   }
@@ -75,6 +87,9 @@ const Span = styled.span`
   }
   &.small {
     font-size: 1rem;
+  }
+  &.tiny {
+    font-size: 0.8rem;
   }
 `;
 

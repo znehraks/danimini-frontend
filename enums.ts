@@ -5,4 +5,5 @@ export enum TYPO_SIZE {
   LARGE = "large",
   MEDIUM = "medium",
   SMALL = "small",
+  TINY = "tiny",
 }
