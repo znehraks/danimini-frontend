@@ -8,11 +8,12 @@ import React, { ReactNode } from "react";
 type TButtonProps = {
   children: ReactNode;
   style?: SerializedStyles;
+  onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 } & BaseButtonProps;
 
-export function Button({ children, style, ...props }: TButtonProps) {
+export function Button({ children, style, onClick, ...props }: TButtonProps) {
   return (
-    <AntdButton css={style} {...props}>
+    <AntdButton onClick={onClick} css={style} {...props}>
       {children}
     </AntdButton>
   );

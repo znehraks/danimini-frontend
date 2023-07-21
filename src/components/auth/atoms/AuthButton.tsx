@@ -5,10 +5,11 @@ import { Button } from "@/components/@common/atoms/Button";
 
 type TAuthButtonProps = {
   children: ReactNode;
+  onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
-export function AuthButton({ children }: TAuthButtonProps) {
+export function AuthButton({ children, onClick }: TAuthButtonProps) {
   return (
-    <Button type="primary" css={style}>
+    <Button onClick={onClick} type="primary" css={style}>
       {children}
     </Button>
   );

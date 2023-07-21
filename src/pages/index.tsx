@@ -1,16 +1,6 @@
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function HomePage() {
-  const router = useRouter();
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (!accessToken) {
-      router.replace("/auth");
-    } else {
-      router.replace("/feed");
-    }
-  }, [router]);
   // const queryClient = useQueryClient();
   // const { data, error, isLoading } = useQuery(
   //   ["restaurantData"],
