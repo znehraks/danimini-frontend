@@ -23,11 +23,12 @@ const layoutStyle: React.CSSProperties = {
 };
 
 const boxStyle: React.CSSProperties = {
-  flex: 40,
+  flex: 3,
   background: "beige",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
   height: "100vh",
+  padding: "2rem 20%",
 };

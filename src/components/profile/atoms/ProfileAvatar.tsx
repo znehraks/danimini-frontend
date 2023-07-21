@@ -9,8 +9,8 @@ export function ProfileAvatar({ url }: TProflieAvatarProps) {
   return (
     <Box style={boxStyle}>
       <Image
-        width={250}
-        height={250}
+        width={150}
+        height={150}
         src={
           url ??
           "https://m.bhc.co.kr/images/menu/img_menu_410x271_20230418_3.png"
@@ -21,4 +21,6 @@ export function ProfileAvatar({ url }: TProflieAvatarProps) {
   );
 }
 
-const boxStyle: React.CSSProperties = {};
+const boxStyle: React.CSSProperties = {
+  flex: 1,
+};

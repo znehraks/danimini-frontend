@@ -1,14 +1,8 @@
 import React from "react";
-import { Tabs } from "antd";
+import { Tabs, TabsProps } from "antd";
 
-export function ProfileTab() {
-  return (
-    <Tabs
-      items={[
-        { label: "일", key: "1", children: "일차일드" },
-        { label: "이", key: "2", children: "이차일드" },
-        { label: "삼", key: "3", children: "삼차일드" },
-      ]}
-    />
-  );
+export type TProfileTab = {} & TabsProps;
+export function ProfileTab({ ...props }: TProfileTab) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <Tabs {...props} />;
 }
