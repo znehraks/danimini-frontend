@@ -4,6 +4,13 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "m.bhc.co.kr",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

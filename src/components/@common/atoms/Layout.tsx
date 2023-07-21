@@ -1,15 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import React, { ReactNode } from "react";
 
 type TLayoutProps = {
   children: ReactNode;
-  style?: SerializedStyles;
+  style?: React.CSSProperties;
 };
 
 export function Layout({ children, style }: TLayoutProps) {
-  return <Main css={style}>{children}</Main>;
+  return <Main style={style}>{children}</Main>;
 }
 
 const Main = styled.main`

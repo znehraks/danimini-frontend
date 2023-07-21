@@ -1,6 +1,14 @@
 import React from "react";
-import { Layout } from "@/components/@common/atoms/Layout";
+import { PageLayout } from "@/components/@common/temps/PageLayout";
+import { ProfileAtom } from "@/components/profile/atoms";
+import { ProfileTop } from "@/components/profile/molecules/ProfileTop";
 
 export default function ProfilePage() {
-  return <Layout>유저프로필</Layout>;
+  return (
+    <PageLayout>
+      <ProfileTop />
+      <ProfileAtom.Tab />
+      유저프로필
+    </PageLayout>
+  );
 }
