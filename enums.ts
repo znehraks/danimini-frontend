@@ -7,3 +7,8 @@ export enum TYPO_SIZE {
   SMALL = "small",
   TINY = "tiny",
 }
+
+export enum PROFILE_TAB {
+  POST = "POST",
+  TODO = "TODO",
+}
