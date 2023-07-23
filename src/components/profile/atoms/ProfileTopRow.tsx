@@ -1,14 +1,15 @@
 import React, { ReactNode } from "react";
 import { Box } from "@/components/@common/atoms/Box";
 
-type TProfileInfoLayout = { children: ReactNode };
-export function ProfileInfoLayout({ children }: TProfileInfoLayout) {
+type TProfileTopRow = { children: ReactNode };
+export function ProfileTopRow({ children }: TProfileTopRow) {
   return <Box style={style}>{children}</Box>;
 }
 
 const style: React.CSSProperties = {
-  flex: 2,
-  height: "9.375rem",
+  flex: 1,
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "2rem",
 };

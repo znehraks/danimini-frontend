@@ -17,8 +17,10 @@ export function AuthBottomMolc() {
     onSuccess: ({ data: { accessToken, email: _email } }) => {
       console.log("성공", accessToken, _email);
       localStorage.setItem("accessToken", accessToken);
-      message.success(`${_email}님 안녕하세요!`);
-      router.replace("/feed");
+      if (accessToken) {
+        message.success(`${_email}님 안녕하세요!`);
+        router.replace("/feed");
+      }
     },
     onError: () => {
       console.log("에러");
@@ -28,6 +30,7 @@ export function AuthBottomMolc() {
     <>
       <AuthAtom.Button
         onClick={() => {
+          console.log("hihi");
           mutate({ email, password });
         }}
       >

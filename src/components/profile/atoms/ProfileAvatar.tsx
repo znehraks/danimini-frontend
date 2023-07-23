@@ -11,10 +11,7 @@ export function ProfileAvatar({ url }: TProflieAvatarProps) {
       <Image
         width={150}
         height={150}
-        src={
-          url ??
-          "https://m.bhc.co.kr/images/menu/img_menu_410x271_20230418_3.png"
-        }
+        src={url ?? "https://www.thechooeok.com/common/img/default_profile.png"}
         alt="프로필 이미지"
       />
     </Box>
@@ -23,4 +20,7 @@ export function ProfileAvatar({ url }: TProflieAvatarProps) {
 
 const boxStyle: React.CSSProperties = {
   flex: 1,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 };

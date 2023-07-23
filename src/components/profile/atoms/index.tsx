@@ -3,6 +3,7 @@ import { ProfileButton } from "./ProfileButton";
 import { ProfileFeedCard } from "./ProfileFeedCard";
 import { ProfileInfoLayout } from "./ProfileInfoLayout";
 import { ProfileTab } from "./ProfileTab";
+import { ProfileTopRow } from "./ProfileTopRow";
 import { ProfileTopLayout } from "./ProfileTopLayout";
 
 export const ProfileAtom = {
@@ -12,4 +13,5 @@ export const ProfileAtom = {
   InfoLayout: ProfileInfoLayout,
   Tab: ProfileTab,
   TopLayout: ProfileTopLayout,
+  TopRow: ProfileTopRow,
 };

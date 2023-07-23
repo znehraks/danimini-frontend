@@ -24,7 +24,6 @@ const layoutStyle: React.CSSProperties = {
 
 const boxStyle: React.CSSProperties = {
   flex: 3,
-  background: "beige",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
