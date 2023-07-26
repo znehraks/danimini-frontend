@@ -91,6 +91,9 @@ const Span = styled.span`
   &.tiny {
     font-size: 0.8rem;
   }
+  span {
+    color: #9a9a9a;
+  }
 `;
 
 const TitleTypo = styled(Span)`

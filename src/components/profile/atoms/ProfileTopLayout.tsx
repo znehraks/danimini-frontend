@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { Box } from "@/components/@common/atoms/Box";
 
-type TProfileTopLayout = { children: ReactNode };
-export function ProfileTopLayout({ children }: TProfileTopLayout) {
+type TProfileTopLayoutProps = { children: ReactNode };
+export function ProfileTopLayout({ children }: TProfileTopLayoutProps) {
   return <Box style={style}>{children}</Box>;
 }
 

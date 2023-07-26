@@ -4,12 +4,13 @@ import { useMutation } from "@tanstack/react-query";
 import { message } from "antd";
 import { useRouter } from "next/router";
 import { AuthAtom } from "../atoms";
-import { emailInputAtom, pwdInputAtom } from "@/recoilAtoms";
+import { emailInputAtom, pwdInputAtom, userEmailAtom } from "@/recoilAtoms";
 import { login } from "@/api";
 
 export function AuthBottomMolc() {
   const [email] = useRecoilState(emailInputAtom);
   const [password] = useRecoilState(pwdInputAtom);
+  const [, setUserEmail] = useRecoilState(userEmailAtom);
   const router = useRouter();
 
   const { mutate } = useMutation({
@@ -19,6 +20,7 @@ export function AuthBottomMolc() {
       localStorage.setItem("accessToken", accessToken);
       if (accessToken) {
         message.success(`${_email}님 안녕하세요!`);
+        setUserEmail(_email);
         router.replace("/feed");
       }
     },

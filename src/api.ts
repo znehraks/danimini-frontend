@@ -3,6 +3,13 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000";
 
+const checkToken = (errorCode: number) => {
+  if (errorCode === -1) {
+    localStorage.removeItem("accessToken");
+    window.location.reload();
+  }
+};
+
 type TLoginArgs = {
   email: string;
   password: string;
@@ -19,7 +26,7 @@ export const login = async ({ email, password }: TLoginArgs) => {
   return res;
 };
 
-type TProfileInfo = {
+export type TProfileInfo = {
   feed_created_at: string;
   feed_desc: string;
   feed_id: string;
@@ -37,6 +44,7 @@ type TProfileInfo = {
   user_email: string;
   user_id: string;
   user_desc: string;
+  user_avatar: string;
   user_updated_at: string;
 };
 export const getProfileInfo = async () => {
@@ -53,7 +61,7 @@ export const getProfileInfo = async () => {
   >("/users/me", {
     headers: { Authorization: accessToken },
   });
-
+  checkToken((res.data as any).errorCode);
   // const [
   //   basicInfo,
   //   [{ feed_count }],
@@ -75,4 +83,36 @@ export const getProfileInfo = async () => {
     followingCount,
     followerCount,
   };
+};
+
+type TFeedInfo = {
+  user_email: string;
+  user_avatar: string;
+  feed_author_id: string;
+  feed_created_at: string;
+  feed_desc: string;
+  feed_id: string;
+  feed_thumb: string;
+  feed_title: string;
+  todo_id: string;
+  feed_updated_at: string;
+  comments: {
+    comment_id: string;
+    comment_content: string;
+    comment_author_id: string;
+    comment_created_at: string;
+    comment_updated_at: string;
+  }[];
+};
+
+export const getFeedInfo = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) return null;
+
+  const res = await axios.get<TFeedInfo[]>("/feeds/following", {
+    headers: { Authorization: accessToken },
+  });
+  checkToken((res.data as any).errorCode);
+
+  return res.data;
 };

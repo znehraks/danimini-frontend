@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
 import { Box } from "@/components/@common/atoms/Box";
 
-type TProfileInfoLayoutProps = { children: ReactNode };
-export function ProfileInfoLayout({ children }: TProfileInfoLayoutProps) {
+type TFeedCardLayoutProps = { children: ReactNode };
+export function FeedCardLayout({ children }: TFeedCardLayoutProps) {
   return <Box style={style}>{children}</Box>;
 }
 
 const style: React.CSSProperties = {
-  flex: 2,
-  height: "9.375rem",
+  width: "29.375rem",
+  height: "auto",
   display: "flex",
   flexDirection: "column",
 };

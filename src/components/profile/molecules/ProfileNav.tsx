@@ -2,11 +2,11 @@ import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { Box } from "@/components/@common/atoms/Box";
 import { ProfileAtom } from "../atoms";
-import { TProfileTab } from "../atoms/ProfileTab";
+import { TProfileTabProps } from "../atoms/ProfileTab";
 import { activeProfileTabAtom } from "@/recoilAtoms";
 import { PROFILE_TAB } from "../../../../enums";
 
-type TProfileNav = {} & TProfileTab;
+type TProfileNav = {} & TProfileTabProps;
 export function ProfileNav({ items }: TProfileNav) {
   const [, setActiveProfileTab] = useRecoilState(activeProfileTabAtom);
   const onChange = useCallback(

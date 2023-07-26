@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         // hostname: "m.bhc.co.kr",
-        hostname: "www.thechooeok.com",
+        hostname: "*",
       },
     ],
   },

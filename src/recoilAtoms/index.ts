@@ -11,7 +11,17 @@ export const pwdInputAtom = atom({
   default: "",
 });
 
+export const userEmailAtom = atom<string | undefined>({
+  key: "userEmailAtom",
+  default: undefined,
+});
+
 export const activeProfileTabAtom = atom({
   key: "activeProfileTabAtom",
   default: PROFILE_TAB.POST,
+});
+
+export const activeFeedModalIdAtom = atom<string | undefined>({
+  key: "activeFeedModalIdAtom",
+  default: undefined,
 });

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function HomePage() {
   // const queryClient = useQueryClient();
   // const { data, error, isLoading } = useQuery(
@@ -21,25 +19,7 @@ export default function HomePage() {
   // if (!data) return null;
   // if (error) return <div>에러</div>;
   // if (isLoading) return <div>로딩</div>;
-  return (
-    <div>
-      메인
-      {/* <div>{data.map((item) => item.name)}</div>
-    <button
-      onClick={() => {
-        mutation.mutate({
-          id: data.length + 1 ?? 0,
-          name: "1",
-          description: "1",
-          image: "1",
-          thumb: "1",
-        });
-      }}
-    >
-      버튼
-    </button> */}
-    </div>
-  );
+  return null;
 }
 
 // export const getServerSideProps:GetServerSideProps = () => {

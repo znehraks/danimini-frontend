@@ -14,7 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken && router.pathname !== "/auth") {
       router.replace("/auth");
-    } else if (accessToken && router.pathname === "/auth") {
+    } else if (
+      accessToken &&
+      (router.pathname === "/auth" || router.pathname === "/")
+    ) {
       router.replace("/feed");
     }
   }, [router, router.pathname]);

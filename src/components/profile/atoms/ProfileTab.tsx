@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs, TabsProps } from "antd";
 
-export type TProfileTab = {} & TabsProps;
-export function ProfileTab({ ...props }: TProfileTab) {
+export type TProfileTabProps = {} & TabsProps;
+export function ProfileTab({ ...props }: TProfileTabProps) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Tabs {...props} />;
 }
