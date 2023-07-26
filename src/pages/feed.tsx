@@ -29,7 +29,7 @@ export default function FeedPage() {
             </FeedAtom.CardCommentHeaderLayout>
             {item.comments.map((comment) => (
               <FeedAtom.CardCommentContent>
-                {comment.comment_content}
+                {comment.comment_author_email} {comment.comment_content}
               </FeedAtom.CardCommentContent>
             ))}
           </FeedAtom.CardCommentLayout>

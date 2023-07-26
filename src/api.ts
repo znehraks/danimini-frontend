@@ -109,6 +109,7 @@ type TFeedInfo = {
     comment_id: string;
     comment_content: string;
     comment_author_id: string;
+    comment_author_email: string;
     comment_created_at: string;
     comment_updated_at: string;
   }[];
