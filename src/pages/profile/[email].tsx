@@ -15,8 +15,6 @@ export default function ProfilePage() {
   const router = useRouter();
   const [userEmail] = useRecoilState(userEmailAtom);
 
-  console.log("userEmail", userEmail);
-  console.log("router.query.email", router.query.email);
   const isMe = userEmail === router.query.email;
   const targetEmail = router?.query?.email as string;
   const { data, isError, error, isLoading } = useQuery(
@@ -28,8 +26,6 @@ export default function ProfilePage() {
       retryDelay: 3000,
     }
   );
-
-  console.log("datatata", data);
 
   if (!data) return null;
   if (isLoading) return null;
