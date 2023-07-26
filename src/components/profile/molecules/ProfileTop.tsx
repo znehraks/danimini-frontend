@@ -1,29 +1,22 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useRecoilState } from "recoil";
 import { ProfileAtom } from "../atoms";
 import { ProfileAvatar } from "../atoms/ProfileAvatar";
-import { getProfileInfo } from "@/api";
 import { Typo } from "@/components/@common/atoms/Typo";
 import { TYPO_SIZE } from "../../../../enums";
-import { userEmailAtom } from "@/recoilAtoms";
+import { TProfileInfo } from "@/api";
 
-export function ProfileTop() {
-  const [userEmail] = useRecoilState(userEmailAtom);
-  const { data, isError, error, isLoading } = useQuery(["me"], getProfileInfo, {
-    _optimisticResults: "optimistic",
-    refetchOnWindowFocus: true,
-    retryDelay: 3000,
-  });
+type TProfileTopProps = {
+  data: TProfileInfo;
+  userEmail: string;
+};
 
-  if (!data) return null;
-  if (isLoading) return null;
-  if (isError) return null;
-  if (error) return null;
-
+export function ProfileTop({ data, userEmail }: TProfileTopProps) {
   return (
     <ProfileAtom.TopLayout>
-      <ProfileAvatar size={{ width: 150, height: 150 }} />
+      <ProfileAvatar
+        url={data.basicInfo[0]?.user_avatar}
+        size={{ width: 150, height: 150 }}
+      />
       <ProfileAtom.InfoLayout>
         <ProfileAtom.TopRow>
           <Typo.Content size={TYPO_SIZE.MEDIUM}>{userEmail}</Typo.Content>

@@ -26,7 +26,7 @@ export const login = async ({ email, password }: TLoginArgs) => {
   return res;
 };
 
-export type TProfileInfo = {
+export type TRawProfileInfo = {
   feed_created_at: string;
   feed_desc: string;
   feed_id: string;
@@ -47,18 +47,27 @@ export type TProfileInfo = {
   user_avatar: string;
   user_updated_at: string;
 };
-export const getProfileInfo = async () => {
+
+export type TProfileInfo = {
+  basicInfo: TRawProfileInfo[];
+  feedCount: number;
+  todoCount: number;
+  followingCount: number;
+  followerCount: number;
+};
+
+export const getProfileInfo = async (isMe: boolean, userEmail: string) => {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) return null;
   const res = await axios.get<
     [
-      TProfileInfo[],
+      TRawProfileInfo[],
       [{ feed_count: number }],
       [{ todo_count: number }],
       [{ following_count: number }],
       [{ follower_count: number }],
     ]
-  >("/users/me", {
+  >(isMe ? "/users/me" : `/users/${userEmail}`, {
     headers: { Authorization: accessToken },
   });
   checkToken((res.data as any).errorCode);

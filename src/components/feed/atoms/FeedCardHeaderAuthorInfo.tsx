@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import moment from "moment";
+import { MoreOutlined } from "@ant-design/icons";
+import Link from "next/link";
 import { Box } from "@/components/@common/atoms/Box";
 import { Typo } from "@/components/@common/atoms/Typo";
 import { TYPO_SIZE } from "../../../../enums";
@@ -17,7 +19,7 @@ export function FeedCardHeaderAuthorInfo({
 }: TFeedCardHeaderAuthorInfoProps) {
   return (
     <Box style={layoutStyle}>
-      <AvatarBox>
+      <AvatarBox href={`/profile/${email}`}>
         <img src={avatar} alt={`${email} 아바타`} />
       </AvatarBox>
       <IdBox>
@@ -26,12 +28,9 @@ export function FeedCardHeaderAuthorInfo({
             {email} • <span>{moment().from(feedCreatedAt)}</span>
           </Typo.Content>
         </div>
-        {/* <div>
-          <Typo.Content size={TYPO_SIZE.TINY}>원본 오디오</Typo.Content>
-        </div> */}
       </IdBox>
       <MoreButton>
-        
+        <MoreOutlined style={{ transform: "rotate(90deg)" }} />
       </MoreButton>
     </Box>
   );
@@ -45,7 +44,7 @@ const layoutStyle: React.CSSProperties = {
   alignItems: "center",
 };
 
-const AvatarBox = styled.div`
+const AvatarBox = styled(Link)`
   width: 2.625rem;
   padding: 0 0.5rem;
   display: flex;
@@ -67,7 +66,9 @@ const IdBox = styled.div`
 `;
 
 const MoreButton = styled.div`
+  cursor: pointer;
   margin-right: auto;
   width: 1.5rem;
   height: 1.5rem;
+  display: flex;
 `;

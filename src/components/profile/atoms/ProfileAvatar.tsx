@@ -1,38 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
 import styled from "@emotion/styled";
 import { Box } from "@/components/@common/atoms/Box";
-import { getProfileInfo } from "@/api";
 
 type TProflieAvatarProps = {
-  url?: string;
+  url: string;
   size: { width: number; height: number };
 };
 export function ProfileAvatar({
   url,
   size: { width, height },
 }: TProflieAvatarProps) {
-  const { data, isError, error, isLoading } = useQuery(["me"], getProfileInfo, {
-    _optimisticResults: "optimistic",
-    refetchOnWindowFocus: true,
-    retryDelay: 3000,
-  });
-
-  if (!data) return null;
-  if (isLoading) return null;
-  if (isError) return null;
-  if (error) return null;
-
   return (
     <Box style={boxStyle} className="img-box">
       <ImageBox height={height}>
-        <Image
-          width={width}
-          height={height}
-          src={url ?? data.basicInfo[0].user_avatar}
-          alt="프로필 이미지"
-        />
+        <Image width={width} height={height} src={url} alt="프로필 이미지" />
       </ImageBox>
     </Box>
   );

@@ -1,16 +1,16 @@
 import React from "react";
 import { ProfileFeedCardLayout } from "./ProfileFeedCardLayout";
-import { TProfileInfo } from "@/api";
+import { TRawProfileInfo } from "@/api";
 
 type TProfileTodoCardProps = {
   todoInfo: {
-    createdAt: TProfileInfo["todo_created_at"];
-    desc: TProfileInfo["todo_desc"];
-    id: TProfileInfo["todo_id"];
-    isFinished: TProfileInfo["todo_is_finished"];
-    point: TProfileInfo["todo_point"];
-    title: TProfileInfo["todo_title"];
-    updatedAt: TProfileInfo["todo_updated_at"];
+    createdAt: TRawProfileInfo["todo_created_at"];
+    desc: TRawProfileInfo["todo_desc"];
+    id: TRawProfileInfo["todo_id"];
+    isFinished: TRawProfileInfo["todo_is_finished"];
+    point: TRawProfileInfo["todo_point"];
+    title: TRawProfileInfo["todo_title"];
+    updatedAt: TRawProfileInfo["todo_updated_at"];
   };
 };
 
