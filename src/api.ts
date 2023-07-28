@@ -94,7 +94,7 @@ export const getProfileInfo = async (isMe: boolean, userEmail: string) => {
   };
 };
 
-type TFeedInfo = {
+export type TFeedInfo = {
   user_email: string;
   user_avatar: string;
   feed_author_id: string;
@@ -122,6 +122,32 @@ export const getFeedInfo = async () => {
   const res = await axios.get<TFeedInfo[]>("/feeds/following", {
     headers: { Authorization: accessToken },
   });
+  checkToken((res.data as any).errorCode);
+
+  return res.data;
+};
+
+type TCreateCommentData = {
+  comment_content: string;
+  feed_id: string;
+};
+export const createComment = async ({
+  comment_content,
+  feed_id,
+}: TCreateCommentData) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) return null;
+
+  const res = await axios.post<TCreateCommentData>(
+    "/comments",
+    { comment_content, feed_id },
+    {
+      headers: { Authorization: accessToken },
+    }
+  );
+
+  console.log("jereerejrej");
+  console.log("res", res);
   checkToken((res.data as any).errorCode);
 
   return res.data;

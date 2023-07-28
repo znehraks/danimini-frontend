@@ -55,13 +55,17 @@ const AvatarBox = styled(Link)`
     width: 2rem;
     height: 2rem;
   }
+  margin-right: 0.5rem;
 `;
 const IdBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   div {
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.2rem;
+    span {
+      font-weight: 800;
+    }
   }
 `;
 

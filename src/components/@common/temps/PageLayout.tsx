@@ -28,6 +28,6 @@ const boxStyle: React.CSSProperties = {
   flexDirection: "column",
   justifyContent: "flex-start",
   alignItems: "center",
-  height: "100vh",
-  padding: "2rem 20%",
+  minHeight: "100vh",
+  padding: "3rem 20%",
 };

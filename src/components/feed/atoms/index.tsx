@@ -1,4 +1,7 @@
-import { FeedCardCommentContent } from "./FeedCardCommentContent";
+import { FeedCardCommentContentLine } from "./FeedCardCommentContent";
+import { FeedCardCommentContentInput } from "./FeedCardCommentContentInput";
+import { FeedCardCommentContentLayout } from "./FeedCardCommentContentLayout";
+import { FeedCardCommentContentLoadMoreButton } from "./FeedCardCommentContentLoadMoreButton";
 import { FeedCardCommentHeader } from "./FeedCardCommentHeader";
 import { FeedCardCommentHeaderLayout } from "./FeedCardCommentHeaderLayout";
 import { FeedCardCommentLayout } from "./FeedCardCommentLayout";
@@ -19,5 +22,8 @@ export const FeedAtom = {
   CardCommentLayout: FeedCardCommentLayout,
   CardCommentHeaderLayout: FeedCardCommentHeaderLayout,
   CardCommentHeader: FeedCardCommentHeader,
-  CardCommentContent: FeedCardCommentContent,
+  CardCommentContentLine: FeedCardCommentContentLine,
+  CardCommentContentLayout: FeedCardCommentContentLayout,
+  CardCommentContentLoadMoreButton: FeedCardCommentContentLoadMoreButton,
+  CardCommentContentInput: FeedCardCommentContentInput,
 };

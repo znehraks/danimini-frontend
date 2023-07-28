@@ -12,5 +12,5 @@ const style: React.CSSProperties = {
   flexDirection: "row",
   justifyContent: "flex-start",
   alignItems: "center",
-  marginBottom: "0.625rem",
+  marginBottom: "0.3rem",
 };
