@@ -11,7 +11,14 @@ export function FeedCardCommentContentInput({
   const queryClient = useQueryClient();
   const { mutate } = useMutation(["createComment"], createComment, {
     onSuccess: () => {
+      console.log("success??");
       queryClient.invalidateQueries(["feeds"]);
+    },
+    onError: () => {
+      console.log("error");
+    },
+    onSettled: () => {
+      console.log("settled");
     },
   });
   const [value, setValue] = useState("");

@@ -16,7 +16,7 @@ export default function FeedPage() {
   return (
     <PageLayout>
       {data.map((item) => (
-        <FeedAtom.CardLayout>
+        <FeedAtom.CardLayout key={item.feed_id}>
           <FeedCardHeaderMolc
             user_email={item.user_email}
             user_avatar={item.user_avatar}

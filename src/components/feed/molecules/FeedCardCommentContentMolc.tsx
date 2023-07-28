@@ -18,6 +18,9 @@ export function FeedCardCommentContentMolc({
   const handleOnClickShowAllCommentsButton = useCallback(() => {
     setAllComments(true);
   }, []);
+  const handleOnClickHideAllCommentsButton = useCallback(() => {
+    setAllComments(false);
+  }, []);
   const comment = comments[0];
   return (
     <FeedAtom.CardCommentContentLayout>
@@ -26,7 +29,7 @@ export function FeedCardCommentContentMolc({
           {comments.map((c) => {
             return (
               <FeedAtom.CardCommentContentLine
-                commentExpanded={commentExpanded}
+                commentExpanded
                 key={c.comment_id}
                 email={c.comment_author_email}
                 content={c.comment_content}
@@ -43,20 +46,35 @@ export function FeedCardCommentContentMolc({
         />
       )}
 
-      {!commentExpanded && comment.comment_content.length > 30 && (
-        <FeedAtom.CardCommentContentLoadMoreButton
-          text="더 보기"
-          onClick={handleOnClickCommentExpandedButton}
-        />
-      )}
+      {!showAllComments &&
+        !commentExpanded &&
+        comment.comment_content.length > 30 && (
+          <FeedAtom.CardCommentContentLoadMoreButton
+            text="더 보기"
+            onClick={handleOnClickCommentExpandedButton}
+          />
+        )}
 
       {/* 원래는 댓글 모두 보기 하면, 모달이 보여져야함 => 추후 데이터가 많아졌을 때를 대비해서 무한 스크롤 페칭으로 변경해야함 */}
-      {!showAllComments && comments.length > 1 && (
-        <FeedAtom.CardCommentContentLoadMoreButton
-          text={`댓글 ${comments.length - 1}개 모두 보기`}
-          onClick={handleOnClickShowAllCommentsButton}
-        />
-      )}
+      {(() => {
+        if (showAllComments) {
+          return (
+            <FeedAtom.CardCommentContentLoadMoreButton
+              text="댓글 접기"
+              onClick={handleOnClickHideAllCommentsButton}
+            />
+          );
+        }
+        if (comments.length > 1) {
+          return (
+            <FeedAtom.CardCommentContentLoadMoreButton
+              text={`댓글 ${comments.length - 1}개 모두 보기`}
+              onClick={handleOnClickShowAllCommentsButton}
+            />
+          );
+        }
+        return null;
+      })()}
       <FeedAtom.CardCommentContentInput feed_id={feed_id} />
     </FeedAtom.CardCommentContentLayout>
   );
