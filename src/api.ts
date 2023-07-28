@@ -10,6 +10,17 @@ const checkToken = (errorCode: number) => {
   }
 };
 
+export const getMe = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) return null;
+  const res = await axios.get<[{ user_email: string }]>("/users/me", {
+    headers: { Authorization: accessToken },
+  });
+  console.log("res", res);
+  checkToken((res.data as any).errorCode);
+  return res.data[0].user_email;
+};
+
 type TLoginArgs = {
   email: string;
   password: string;
@@ -67,7 +78,7 @@ export const getProfileInfo = async (isMe: boolean, userEmail: string) => {
       [{ following_count: number }],
       [{ follower_count: number }],
     ]
-  >(isMe ? "/users/me" : `/users/${userEmail}`, {
+  >(isMe ? "/users/profile/me" : `/users/${userEmail}`, {
     headers: { Authorization: accessToken },
   });
   checkToken((res.data as any).errorCode);
@@ -146,8 +157,6 @@ export const createComment = async ({
     }
   );
 
-  console.log("jereerejrej");
-  console.log("res", res);
   checkToken((res.data as any).errorCode);
 
   return res.data;

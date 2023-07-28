@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Input as AntInput } from "antd";
 import styled from "@emotion/styled";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -11,25 +11,26 @@ export function FeedCardCommentContentInput({
   const queryClient = useQueryClient();
   const { mutate } = useMutation(["createComment"], createComment, {
     onSuccess: () => {
-      console.log("success??");
       queryClient.invalidateQueries(["feeds"]);
     },
-    onError: () => {
-      console.log("error");
-    },
-    onSettled: () => {
-      console.log("settled");
-    },
+    onError: () => {},
+    onSettled: () => {},
   });
   const [value, setValue] = useState("");
-  return (
-    <Input
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
+  const handleOnKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        if (!!value && value.trim() !== "") {
           mutate({ comment_content: value, feed_id });
           setValue("");
         }
-      }}
+      }
+    },
+    [feed_id, mutate, value]
+  );
+  return (
+    <Input
+      onKeyDown={handleOnKeyDown}
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
       bordered={false}

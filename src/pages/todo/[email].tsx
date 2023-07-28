@@ -1,6 +1,6 @@
 import React from "react";
-import { Layout } from "@/components/@common/atoms/Layout";
+import { PageLayout } from "@/components/@common/temps/PageLayout";
 
 export default function TodoPage() {
-  return <Layout>유저투두</Layout>;
+  return <PageLayout>유저투두</PageLayout>;
 }

@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React from "react";
 
 type TClickableSpanProps = {
@@ -12,8 +13,10 @@ export function ClickableSpan({
 }: TClickableSpanProps) {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <span role="button" tabIndex={0} onClick={onClick} style={style}>
+    <Span role="button" tabIndex={0} onClick={onClick} style={style}>
       {children}
-    </span>
+    </Span>
   );
 }
+
+const Span = styled.span``;
